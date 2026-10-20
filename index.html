@@ -3,715 +3,808 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Juan Francisco Brusadin | Junior Data Analyst Portfolio</title>
-  <!-- Google Fonts & Font Awesome Icons -->
+  <title>Caso de Estudio Cyclistic | Análisis de Datos Q1 2019 - Q1 2020</title>
+  
+  <!-- Inter Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
             mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
             brand: {
               50: '#f0fdfa',
-              400: '#2dd4bf',
+              100: '#ccfbf1',
               500: '#14b8a6',
               600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
               900: '#134e4a',
             },
-            surface: {
-              dark: '#090d16',
-              card: '#111726',
-              border: '#1f293d',
-              highlight: '#1e293b'
+            navy: {
+              800: '#1e293b',
+              900: '#0f172a',
+              950: '#020617',
             }
           }
         }
       }
     }
   </script>
-  <style>
-    /* Technical Grid Pattern Background */
-    .bg-grid-pattern {
-      background-size: 40px 40px;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    }
-    .glow-cyan {
-      box-shadow: 0 0 45px -10px rgba(20, 184, 166, 0.25);
-    }
-    .code-scroll::-webkit-scrollbar {
-      height: 6px;
-      width: 6px;
-    }
-    .code-scroll::-webkit-scrollbar-thumb {
-      background: #334155;
-      border-radius: 9999px;
-    }
-  </style>
 </head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
 
-<body class="bg-surface-dark text-slate-200 font-sans antialiased bg-grid-pattern min-h-screen selection:bg-brand-500 selection:text-white">
-
-  <!-- Header / Navigation Bar -->
-  <nav class="sticky top-0 z-50 backdrop-blur-md bg-surface-dark/85 border-b border-surface-border">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <a href="#inicio" class="flex items-center gap-2 group">
-          <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-600 to-teal-400 flex items-center justify-center text-white font-mono font-bold text-sm shadow-md group-hover:scale-105 transition-transform">
-            JB
-          </div>
-          <span class="font-mono text-sm tracking-tight text-slate-100 font-semibold group-hover:text-brand-400 transition-colors">
-            jfbrusadin<span class="text-brand-400">.analytics</span>
-          </span>
-        </a>
-
-        <!-- Desktop Links -->
-        <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
-          <a href="#inicio" class="hover:text-brand-400 transition-colors">Inicio</a>
-          <a href="#sobre-mi" class="hover:text-brand-400 transition-colors">Sobre Mí</a>
-          <a href="#habilidades" class="hover:text-brand-400 transition-colors">Habilidades</a>
-          <a href="#caso-estudio" class="text-brand-400 hover:text-brand-300 transition-colors flex items-center gap-1.5">
-            <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
-            </span>
-            Caso Destacado
-          </a>
-          <a href="#proyectos" class="hover:text-brand-400 transition-colors">Proyectos</a>
-          <a href="#contacto" class="px-4 py-2 rounded-lg bg-brand-500/10 border border-brand-500/30 text-brand-400 hover:bg-brand-500 hover:text-white transition-all text-xs font-semibold">
-            Contactar
-          </a>
+  <!-- Header / Navigation -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-white/90 border-b border-slate-200 shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-brand-600 to-teal-400 flex items-center justify-center text-white shadow-sm font-bold text-lg">
+          C
         </div>
-
-        <!-- Mobile Menu Toggle Button -->
-        <div class="md:hidden flex items-center">
-          <button id="mobileMenuBtn" aria-label="Abrir menú" class="p-2 text-slate-400 hover:text-white focus:outline-none">
-            <i class="fa-solid fa-bars text-lg"></i>
-          </button>
+        <div>
+          <span class="font-bold text-slate-900 tracking-tight text-base sm:text-lg">Cyclistic Case Study</span>
+          <span class="hidden sm:inline-block ml-2 px-2 py-0.5 text-xs font-medium bg-slate-100 text-slate-600 rounded-full border border-slate-200">Google Capstone</span>
         </div>
       </div>
-    </div>
-
-    <!-- Mobile Dropdown Menu -->
-    <div id="mobileMenu" class="hidden md:hidden px-4 pt-2 pb-4 bg-surface-card border-b border-surface-border space-y-2 text-sm font-medium">
-      <a href="#inicio" class="block px-3 py-2 rounded-md hover:bg-surface-highlight text-slate-200">Inicio</a>
-      <a href="#sobre-mi" class="block px-3 py-2 rounded-md hover:bg-surface-highlight text-slate-200">Sobre Mí</a>
-      <a href="#habilidades" class="block px-3 py-2 rounded-md hover:bg-surface-highlight text-slate-200">Habilidades</a>
-      <a href="#caso-estudio" class="block px-3 py-2 rounded-md hover:bg-surface-highlight text-brand-400">Caso Destacado: CO₂</a>
-      <a href="#proyectos" class="block px-3 py-2 rounded-md hover:bg-surface-highlight text-slate-200">Proyectos</a>
-      <a href="#contacto" class="block px-3 py-2 rounded-md bg-brand-500 text-white font-semibold text-center">Contactar</a>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <header id="inicio" class="relative pt-16 pb-20 md:pt-28 md:pb-32 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-medium mb-6">
-          <i class="fa-solid fa-circle-dot text-[10px] animate-pulse"></i>
-          Disponible para posiciones de Junior Data Analyst / BI
-        </div>
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
-          Transformando datos brutos en <span class="bg-gradient-to-r from-brand-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">respuestas de negocio</span> accionables.
-        </h1>
-        <p class="text-lg text-slate-400 leading-relaxed mb-8">
-          Soy <span class="text-slate-100 font-semibold">Juan Francisco Brusadin</span>. Me especializo en modelado relacional, consultas SQL complejas (CTEs, Window Functions) y visualizaciones analíticas con enfoque en rigor cuantitativo y storytelling.
-        </p>
-
-        <div class="flex flex-wrap items-center gap-4">
-          <a href="#caso-estudio" class="px-6 py-3 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-semibold text-sm transition-all shadow-lg shadow-brand-500/20 flex items-center gap-2">
-            <i class="fa-solid fa-chart-line"></i> Explorar Caso de Estudio
-          </a>
-          <a href="#contacto" class="px-6 py-3 rounded-xl bg-surface-card hover:bg-surface-highlight border border-surface-border text-slate-200 font-semibold text-sm transition-all flex items-center gap-2">
-            <i class="fa-regular fa-envelope"></i> Conectar
-          </a>
-          <a href="https://github.com/JFBrusadin" target="_blank" rel="noopener noreferrer" class="px-4 py-3 rounded-xl bg-surface-card hover:bg-surface-highlight border border-surface-border text-slate-400 hover:text-white transition-all text-sm" title="Perfil de GitHub">
-            <i class="fa-brands fa-github text-base"></i>
-          </a>
-        </div>
-
-        <!-- Metrics bar -->
-        <div class="mt-14 pt-8 border-t border-surface-border/80 grid grid-cols-3 gap-4">
-          <div>
-            <div class="text-2xl md:text-3xl font-extrabold text-white font-mono">100%</div>
-            <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">SQL reproducible</div>
-          </div>
-          <div>
-            <div class="text-2xl md:text-3xl font-extrabold text-brand-400 font-mono">OWID + INEGI</div>
-            <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Fuentes Oficiales</div>
-          </div>
-          <div>
-            <div class="text-2xl md:text-3xl font-extrabold text-white font-mono">&lt; 2 seg</div>
-            <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Consultas Indexadas</div>
-          </div>
-        </div>
+      
+      <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600">
+        <a href="#contexto" class="hover:text-brand-600 transition-colors">1. Tarea de Negocio</a>
+        <a href="#fuentes" class="hover:text-brand-600 transition-colors">2. Fuentes</a>
+        <a href="#etl" class="hover:text-brand-600 transition-colors">3. Limpieza & ETL</a>
+        <a href="#analisis" class="hover:text-brand-600 transition-colors">4. Métricas Clave</a>
+        <a href="#visualizaciones" class="hover:text-brand-600 transition-colors">5. Visualizaciones</a>
+      </nav>
+      
+      <div class="flex items-center space-x-2">
+        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-brand-50 text-brand-700 border border-brand-200">
+          <span class="w-2 h-2 mr-1.5 rounded-full bg-brand-500 animate-pulse"></span>
+          Dataset Homologado
+        </span>
       </div>
     </div>
   </header>
 
-  <!-- Featured Case Study: CO2 Global Emissions -->
-  <section id="caso-estudio" class="py-20 bg-surface-card/60 border-y border-surface-border relative">
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-b from-slate-900 via-navy-900 to-slate-900 text-white py-16 sm:py-24 border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Section Header -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-        <div class="max-w-2xl">
-          <div class="text-brand-400 font-mono text-xs uppercase tracking-widest font-semibold mb-2">Proyecto Principal • Data Pipeline & Insights</div>
-          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
-            Emisiones Globales de CO₂: La Paradoja entre Volumen y Responsabilidad Histórica
-          </h2>
-          <p class="text-slate-400 text-sm mt-3 leading-relaxed">
-            Un análisis integral basado en datos abiertos del <em>Global Carbon Project (Our World in Data)</em>. Desglosamos la aparente dicotomía entre las emisiones territoriales brutas actuales y la deuda de carbono acumulada por habitante.
-          </p>
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white/10 text-brand-100 text-xs font-mono uppercase tracking-wider mb-4 border border-white/10">
+          Caso de Estudio de Analítica de Datos
         </div>
-        <div class="mt-4 md:mt-0 flex gap-2">
-          <span class="inline-flex items-center px-3 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-300 border border-slate-700">
-            <i class="fa-solid fa-database mr-1.5 text-brand-400"></i> PostgreSQL
-          </span>
-          <span class="inline-flex items-center px-3 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-300 border border-slate-700">
-            <i class="fa-solid fa-chart-simple mr-1.5 text-teal-400"></i> Chart.js
-          </span>
-        </div>
-      </div>
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight mb-6">
+          Patrones de Movilidad Urbana: Comparativa de Usuarios <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-brand-500">Miembros vs. Casuales</span>
+        </h1>
+        <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-8">
+          Evaluación comparativa integral del comportamiento de traslado en el sistema de bicicletas compartidas Cyclistic (Chicago) durante el primer trimestre de 2019 y 2020. Análisis cuantitativo riguroso enfocado en dinámica de duración, distancias, franjas horarias y recurrencia semanal.
+        </p>
 
-      <!-- Live Interactive Visualizer -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-14">
-        
-        <!-- Chart Container Card (8 cols) -->
-        <div class="lg:col-span-8 bg-surface-card p-5 sm:p-6 rounded-2xl border border-surface-border shadow-xl">
-          <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
-            <div>
-              <h3 id="chartTitle" class="text-base font-semibold text-white">
-                Emisiones Anuales Brutas de CO₂ (Millones de Toneladas)
-              </h3>
-              <p class="text-xs text-slate-400">Comparativa histórica de bloques económicos clave (1960 - Actualidad)</p>
-            </div>
-            
-            <!-- Metric Toggle Buttons -->
-            <div class="flex items-center bg-surface-dark p-1 rounded-xl border border-surface-border text-xs">
-              <button id="btnTotal" onclick="switchMetric('total')" class="px-3 py-1.5 rounded-lg bg-brand-500 text-white font-medium transition-all shadow-sm">
-                Emisiones Totales
-              </button>
-              <button id="btnPerCapita" onclick="switchMetric('perCapita')" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white font-medium transition-all">
-                Por Cápita (Ton)
-              </button>
-              <button id="btnCumulative" onclick="switchMetric('cumulative')" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white font-medium transition-all">
-                Histórica Acumulada
-              </button>
-            </div>
-          </div>
-
-          <!-- Canvas for Chart.js -->
-          <div class="relative w-full h-[340px] sm:h-[400px]">
-            <canvas id="emissionsChart"></canvas>
-          </div>
-
-          <div class="mt-4 pt-4 border-t border-surface-border flex items-center justify-between text-xs text-slate-400">
-            <span class="flex items-center gap-1.5">
-              <i class="fa-solid fa-circle-info text-brand-400"></i> Fuente de datos: Our World in Data (CO₂ Dataset)
-            </span>
-            <span class="font-mono text-slate-500">Muestra agregada representativa</span>
-          </div>
-        </div>
-
-        <!-- Metric Insights & KPI Cards (4 cols) -->
-        <div class="lg:col-span-4 space-y-4">
-          
-          <div class="bg-surface-card p-5 rounded-2xl border border-surface-border hover:border-brand-500/40 transition-colors">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-mono uppercase text-slate-400">Punto de Quiebre</span>
-              <span class="text-xs px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-mono">Año 2006</span>
-            </div>
-            <div class="text-xl font-bold text-white mb-1">China supera a EE. UU.</div>
-            <p class="text-xs text-slate-400 leading-relaxed">
-              El auge fabril asiático y la matriz basada en carbón impulsaron las emisiones brutas anuales de China más allá de las norteamericanas, duplicándolas hacia la década actual.
-            </p>
-          </div>
-
-          <div class="bg-surface-card p-5 rounded-2xl border border-surface-border hover:border-brand-500/40 transition-colors">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-mono uppercase text-slate-400">Deuda Climática Histórica</span>
-              <span class="text-xs px-2 py-0.5 rounded bg-brand-500/10 text-brand-400 border border-brand-500/20 font-mono">1750 - Hoy</span>
-            </div>
-            <div class="text-xl font-bold text-white mb-1">Occidente: ~45% acumulado</div>
-            <p class="text-xs text-slate-400 leading-relaxed">
-              Al analizar el stock de carbono que aún persiste en la atmósfera, Estados Unidos y la Unión Europea concentran la mayor cuota acumulada generada desde la Revolución Industrial.
-            </p>
-          </div>
-
-          <div class="bg-surface-card p-5 rounded-2xl border border-surface-border hover:border-brand-500/40 transition-colors">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-mono uppercase text-slate-400">Huella Individual (2022)</span>
-              <span class="text-xs px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-mono">Per Cápita</span>
-            </div>
-            <div class="text-xl font-bold text-white mb-1">14.9 vs 8.0 Toneladas</div>
-            <p class="text-xs text-slate-400 leading-relaxed">
-              Un ciudadano estadounidense promedio produce casi el doble de CO₂ anual que uno en China, y más de 8 veces el de un país de ingresos medios como Argentina o México.
-            </p>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Interactive SQL Inspector -->
-      <div class="bg-surface-card rounded-2xl border border-surface-border overflow-hidden shadow-2xl">
-        <div class="flex flex-wrap items-center justify-between px-6 py-4 border-b border-surface-border bg-surface-dark/60 gap-4">
-          <div class="flex items-center gap-3">
-            <div class="flex gap-1.5">
-              <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
-              <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-              <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
-            </div>
-            <span class="text-xs font-mono text-slate-400 font-medium ml-2">
-              analysis_co2_historical_rankings.sql
-            </span>
-          </div>
-
-          <div class="flex items-center gap-3">
-            <button onclick="copySQLSnippet()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-card hover:bg-surface-highlight border border-surface-border text-xs text-slate-300 font-mono hover:text-white transition-all">
-              <i id="copyIcon" class="fa-regular fa-copy"></i>
-              <span id="copyText">Copiar SQL</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="p-6 overflow-x-auto code-scroll bg-surface-dark/95">
-          <pre class="font-mono text-xs text-slate-300 leading-relaxed"><code id="sqlCodeContent"><span class="text-teal-400 font-semibold">WITH</span> annual_aggregates <span class="text-teal-400 font-semibold">AS</span> (
-    <span class="text-slate-500">-- Filtrado y extracción de métricas principales normalizadas</span>
-    <span class="text-teal-400 font-semibold">SELECT</span> 
-        country,
-        year,
-        co2 <span class="text-teal-400 font-semibold">AS</span> territorial_co2_mt,
-        co2_per_capita,
-        cumulative_co2,
-        <span class="text-slate-500">-- Tasa de crecimiento interanual con función de ventana LAG()</span>
-        <span class="text-indigo-400">LAG</span>(co2, 1) <span class="text-indigo-400">OVER</span> (<span class="text-indigo-400">PARTITION BY</span> country <span class="text-indigo-400">ORDER BY</span> year) <span class="text-teal-400 font-semibold">AS</span> prev_co2
-    <span class="text-teal-400 font-semibold">FROM</span> raw_owid_emissions
-    <span class="text-teal-400 font-semibold">WHERE</span> iso_code <span class="text-teal-400 font-semibold">IS NOT NULL</span> <span class="text-slate-500">-- Excluye agregados continentales brutos</span>
-),
-debt_metrics <span class="text-teal-400 font-semibold">AS</span> (
-    <span class="text-teal-400 font-semibold">SELECT</span> 
-        country,
-        year,
-        territorial_co2_mt,
-        co2_per_capita,
-        cumulative_co2,
-        <span class="text-indigo-400">ROUND</span>(
-            ((territorial_co2_mt - prev_co2) / <span class="text-indigo-400">NULLIF</span>(prev_co2, 0)) * 100, 
-            2
-        ) <span class="text-teal-400 font-semibold">AS</span> yoy_emission_change_pct,
-        <span class="text-slate-500">-- Porcentaje de cuota histórica frente al acumulado mundial en el año de corte</span>
-        <span class="text-indigo-400">DENSE_RANK</span>() <span class="text-indigo-400">OVER</span> (<span class="text-indigo-400">PARTITION BY</span> year <span class="text-indigo-400">ORDER BY</span> cumulative_co2 <span class="text-indigo-400">DESC</span>) <span class="text-teal-400 font-semibold">AS</span> historical_rank
-    <span class="text-teal-400 font-semibold">FROM</span> annual_aggregates
-)
-<span class="text-teal-400 font-semibold">SELECT</span> 
-    country,
-    year,
-    territorial_co2_mt,
-    co2_per_capita,
-    cumulative_co2,
-    yoy_emission_change_pct,
-    historical_rank
-<span class="text-teal-400 font-semibold">FROM</span> debt_metrics
-<span class="text-teal-400 font-semibold">WHERE</span> year = 2023 <span class="text-teal-400 font-semibold">AND</span> historical_rank &lt;= 10
-<span class="text-teal-400 font-semibold">ORDER BY</span> historical_rank <span class="text-indigo-400">ASC</span>;</code></pre>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Technical Skills Section -->
-  <section id="habilidades" class="py-20 border-b border-surface-border">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <div class="text-brand-400 font-mono text-xs uppercase tracking-widest font-semibold mb-2">Stack Técnico & Competencias</div>
-        <h2 class="text-3xl font-bold text-white tracking-tight">Habilidades Enfocadas en el Negocio</h2>
-        <p class="text-slate-400 text-sm mt-3">Herramientas orientadas a responder preguntas complejas sin fricciones arquitectónicas.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        
-        <!-- Skill 1 -->
-        <div class="bg-surface-card p-6 rounded-2xl border border-surface-border relative group hover:border-brand-500/50 transition-all">
-          <div class="w-12 h-12 rounded-xl bg-teal-500/10 border border-teal-500/20 text-teal-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-database"></i>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">SQL Avanzado</h3>
-          <p class="text-xs text-slate-400 mb-4 leading-relaxed">
-            Manejo fluido de CTEs recursivos, Window Functions (<code class="text-teal-400 font-mono">DENSE_RANK, LAG, LEAD</code>), índices B-Tree y normalización de esquemas analíticos.
-          </p>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">PostgreSQL</span>
-            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">MySQL</span>
-            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">SQLite</span>
-          </div>
-        </div>
-
-        <!-- Skill 2 -->
-        <div class="bg-surface-card p-6 rounded-2xl border border-surface-border relative group hover:border-brand-500/50 transition-all">
-          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
-            <i class="fa-solid fa-chart-pie"></i>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">Visualización & BI</h3>
-          <p class="text-xs text-slate-400 mb-4 leading-relaxed">
-            Diseño de paneles orientados a la toma de decisiones con foco en claridad visual, jerarquía tipográfica y eliminación de métricas vanidosas.
-          </p>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Power BI</span>
-            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Tableau</span>
-            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">DAX</span>
-          </div>
-        </div>
-
-        <!-- Skill 3 -->
-        <div class="bg-surface-card p-6 rounded-2xl border border-surface-border relative group hover:border-brand-500/50 transition-all">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
-            <i class="fa-brands fa-python"></i>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">Python & Data Wrangling</h3>
-          <p class="text-xs text-slate-400 mb-4 leading-relaxed">
-            Limpieza automatizada, validación de esquemas, tratamiento de valores nulos o atípicos y extracción de datos vía APIs o scrapers.
-          </p>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Pandas</span>
-            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">NumPy</span>
-            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Matplotlib</span>
-          </div>
-        </div>
-
-        <!-- Skill 4 -->
-        <div class="bg-surface-card p-6 rounded-2xl border border-surface-border relative group hover:border-brand-500/50 transition-all">
-          <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
-            <i class="fa-brands fa-git-alt"></i>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">Control de Versiones</h3>
-          <p class="text-xs text-slate-400 mb-4 leading-relaxed">
-            Estructuración de proyectos reproducibles, documentación rigurosa en Markdown y control de cambios en repositorios colaborativos.
-          </p>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Git</span>
-            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">GitHub Pages</span>
-            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">CI/CD</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Upcoming Projects / Pipeline Section -->
-  <section id="proyectos" class="py-20 border-b border-surface-border bg-surface-dark/40">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-        <div>
-          <div class="text-brand-400 font-mono text-xs uppercase tracking-widest font-semibold mb-2">Roadmap & Casos en Curso</div>
-          <h2 class="text-3xl font-bold text-white tracking-tight">Otros Proyectos Analíticos</h2>
-        </div>
-        <p class="text-xs text-slate-400 mt-2 md:mt-0 font-mono">Investigaciones cuantitativas en modelado</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        
-        <!-- Project 2 Card -->
-        <div class="bg-surface-card rounded-2xl border border-surface-border p-6 hover:border-slate-700 transition-all flex flex-col justify-between">
+        <!-- KPI Quick Bar -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-slate-800/80">
           <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-xs font-mono px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">
-                En desarrollo activo
-              </span>
-              <span class="text-xs text-slate-500 font-mono">INEGI + PROFECO</span>
-            </div>
-            <h3 class="text-xl font-bold text-white mb-2">
-              Mercado Automotor Mexicano: Tasa de Retención de Valor y Tiempos de Postventa
-            </h3>
-            <p class="text-slate-400 text-xs leading-relaxed mb-6">
-              Estudio comparativo sobre el costo total de propiedad (TCO) y depreciación acelerada en marcas entrantes frente a fabricantes japoneses y alemanes consolidados.
-            </p>
+            <span class="block text-slate-400 text-xs font-medium uppercase tracking-wider">Registros Validados</span>
+            <span class="text-2xl font-bold font-mono text-white">783.780</span>
           </div>
-          <div class="flex items-center justify-between pt-4 border-t border-surface-border text-xs">
-            <span class="text-slate-400 font-mono">Python / Scrapy / SQL Server</span>
-            <span class="text-brand-400 font-medium">Próximamente</span>
-          </div>
-        </div>
-
-        <!-- Project 3 Card -->
-        <div class="bg-surface-card rounded-2xl border border-surface-border p-6 hover:border-slate-700 transition-all flex flex-col justify-between">
           <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-xs font-mono px-2.5 py-1 rounded bg-teal-500/10 text-teal-400 border border-teal-500/20">
-                Planificado
-              </span>
-              <span class="text-xs text-slate-500 font-mono">E-Commerce Dataset</span>
-            </div>
-            <h3 class="text-xl font-bold text-white mb-2">
-              Análisis de Cohortes y Abandono (Churn) en Clientes B2C
-            </h3>
-            <p class="text-slate-400 text-xs leading-relaxed mb-6">
-              Segmentación RFM (Recencia, Frecuencia, Valor Monetario) y cálculo de Lifetime Value (LTV) para optimizar estrategias de retención comercial con SQL y Power BI.
-            </p>
+            <span class="block text-slate-400 text-xs font-medium uppercase tracking-wider">Miembros Anuales</span>
+            <span class="text-2xl font-bold font-mono text-teal-400">91,4%</span>
           </div>
-          <div class="flex items-center justify-between pt-4 border-t border-surface-border text-xs">
-            <span class="text-slate-400 font-mono">Window Functions / DAX / Power BI</span>
-            <span class="text-brand-400 font-medium">Próximamente</span>
+          <div>
+            <span class="block text-slate-400 text-xs font-medium uppercase tracking-wider">Usuarios Casuales</span>
+            <span class="text-2xl font-bold font-mono text-amber-400">8,6%</span>
+          </div>
+          <div>
+            <span class="block text-slate-400 text-xs font-medium uppercase tracking-wider">Períodos Evaluados</span>
+            <span class="text-2xl font-bold font-mono text-white">Q1 2019 / 2020</span>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- Contact & Social Footer Section -->
-  <section id="contacto" class="py-20 bg-surface-dark relative">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-medium mb-6">
-        <i class="fa-regular fa-paper-plane"></i> Charlemos de Datos
+  <!-- Main Content Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+
+    <!-- Section 1: Business Task & Scope -->
+    <section id="contexto" class="bg-white rounded-2xl p-6 sm:p-10 border border-slate-200 shadow-sm">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-brand-50 text-brand-700 font-bold text-sm border border-brand-200">1</span>
+        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Declaración de la Tarea de Negocio (Business Task)</h2>
       </div>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
-        ¿Tenés una oportunidad o un desafío técnico?
-      </h2>
-      <p class="text-slate-400 text-sm max-w-xl mx-auto mb-10 leading-relaxed">
-        Estoy activamente buscando sumarme a un equipo donde pueda aportar rigor técnico en SQL, visualización clara y resolución analítica.
+
+      <div class="prose prose-slate max-w-none text-slate-600 space-y-4 leading-relaxed text-sm sm:text-base">
+        <p>
+          <strong>Cyclistic</strong> es una empresa de bicicletas compartidas en Chicago que opera una red de más de 5.800 bicicletas geolocalizadas y casi 700 estaciones de anclaje. Su cartera de clientes se estructura en dos segmentos operacionales primarios: 
+          <span class="font-semibold text-slate-800">Miembros anuales (annual members)</span>, quienes contratan suscripciones anuales completas, y 
+          <span class="font-semibold text-slate-800">Usuarios casuales (casual riders)</span>, quienes adquieren pases por viaje simple o pases de 24 horas.
+        </p>
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 my-6">
+          <h3 class="text-sm font-semibold text-slate-800 uppercase tracking-wider mb-2 flex items-center gap-2">
+            <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            Alcance Estricto del Estudio
+          </h3>
+          <p class="text-sm text-slate-600 m-0">
+            Los análisis financieros de Cyclistic concluyeron que los miembros anuales ofrecen una rentabilidad sostenida notablemente superior frente a los usuarios casuales. Para que el área comercial planifique campañas eficientes, este estudio técnico se aboca con exclusividad a resolver el primer interrogante estratégico: 
+            <span class="text-slate-900 font-medium">¿Cómo difieren los patrones de uso de las bicicletas entre miembros anuales y ciclistas casuales durante el primer trimestre (Q1 2019 vs. Q1 2020)?</span>
+          </p>
+          <p class="text-xs text-slate-500 mt-2 italic">
+            Nota metodológica: El diseño de planes de medios publicitarios, la encuesta cualitativa de intenciones de compra y la formulación de recomendaciones de marketing no forman parte de este informe técnico, quedando delegadas a las áreas correspondientes con fundamento en la evidencia aquí provista.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+          <div class="p-4 rounded-xl border border-slate-200 bg-white">
+            <h4 class="font-semibold text-slate-900 text-sm mb-1">Lily Moreno</h4>
+            <p class="text-xs text-slate-500">Directora de Marketing</p>
+            <p class="text-xs text-slate-600 mt-2">Patrocina el estudio para identificar comportamientos diferenciados que guíen campañas de conversión segmentadas.</p>
+          </div>
+          <div class="p-4 rounded-xl border border-slate-200 bg-white">
+            <h4 class="font-semibold text-slate-900 text-sm mb-1">Equipo Analítico</h4>
+            <p class="text-xs text-slate-500">Marketing Analytics Team</p>
+            <p class="text-xs text-slate-600 mt-2">Responsable de la extracción, depuración, integración dimensional y análisis descriptivo de las fuentes transaccionales.</p>
+          </div>
+          <div class="p-4 rounded-xl border border-slate-200 bg-white">
+            <h4 class="font-semibold text-slate-900 text-sm mb-1">Comité Ejecutivo</h4>
+            <p class="text-xs text-slate-500">Executive Team</p>
+            <p class="text-xs text-slate-600 mt-2">Stakeholders detallistas que demandan sustento cuantitativo validado antes de avalar cualquier redirección presupuestaria.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Data Sources & ROCCC -->
+    <section id="fuentes" class="bg-white rounded-2xl p-6 sm:p-10 border border-slate-200 shadow-sm">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-brand-50 text-brand-700 font-bold text-sm border border-brand-200">2</span>
+        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Descripción de Fuentes y Criterio de Integridad (ROCCC)</h2>
+      </div>
+
+      <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
+        Los datos corresponden a los registros transaccionales públicos de viajes en bicicleta de la ciudad de Chicago (suministrados por <em>Motivate International Inc.</em> bajo licencia pública no exclusiva), organizados en archivos históricos trimestrales: <code class="px-1.5 py-0.5 rounded bg-slate-100 font-mono text-xs text-slate-800">Divvy_Trips_2019_Q1.csv</code> y <code class="px-1.5 py-0.5 rounded bg-slate-100 font-mono text-xs text-slate-800">Divvy_Trips_2020_Q1.csv</code>.
       </p>
 
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto mb-12">
-        <a href="mailto:juanf.brusadin@example.com" class="p-4 rounded-xl bg-surface-card border border-surface-border hover:border-brand-500/50 hover:bg-surface-highlight transition-all group">
-          <i class="fa-regular fa-envelope text-xl text-brand-400 mb-2 block group-hover:scale-110 transition-transform"></i>
-          <span class="text-xs text-slate-400 block">E-mail</span>
-          <span class="text-sm font-semibold text-white">Contactar</span>
-        </a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="p-4 rounded-xl bg-surface-card border border-surface-border hover:border-brand-500/50 hover:bg-surface-highlight transition-all group">
-          <i class="fa-brands fa-linkedin-in text-xl text-blue-400 mb-2 block group-hover:scale-110 transition-transform"></i>
-          <span class="text-xs text-slate-400 block">Red Profesional</span>
-          <span class="text-sm font-semibold text-white">LinkedIn</span>
-        </a>
-        <a href="https://github.com/JFBrusadin" target="_blank" rel="noopener noreferrer" class="p-4 rounded-xl bg-surface-card border border-surface-border hover:border-brand-500/50 hover:bg-surface-highlight transition-all group">
-          <i class="fa-brands fa-github text-xl text-slate-200 mb-2 block group-hover:scale-110 transition-transform"></i>
-          <span class="text-xs text-slate-400 block">Repositorios</span>
-          <span class="text-sm font-semibold text-white">GitHub</span>
-        </a>
+      <!-- ROCCC Matrix -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-6">
+        <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50/50">
+          <span class="inline-block px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-emerald-100 text-emerald-800 mb-2">Reliable</span>
+          <p class="text-xs text-slate-600">Datos primarios operativos capturados de forma automatizada por anclajes físicos y GPS del sistema municipal.</p>
+        </div>
+        <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50/50">
+          <span class="inline-block px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-emerald-100 text-emerald-800 mb-2">Original</span>
+          <p class="text-xs text-slate-600">Información provista directamente por el consorcio administrador del servicio de transporte en Chicago.</p>
+        </div>
+        <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50/50">
+          <span class="inline-block px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-amber-100 text-amber-800 mb-2">Comprehensive</span>
+          <p class="text-xs text-slate-600">Amplitud exhaustiva de eventos, aunque con disparidad de esquema (coordenadas espaciales presentes en 2020 y ausentes en 2019).</p>
+        </div>
+        <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50/50">
+          <span class="inline-block px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-emerald-100 text-emerald-800 mb-2">Current</span>
+          <p class="text-xs text-slate-600">Contrastes interanuales directos entre los primeros trimestres (enero-marzo) de años consecutivos.</p>
+        </div>
+        <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50/50">
+          <span class="inline-block px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-emerald-100 text-emerald-800 mb-2">Cited</span>
+          <p class="text-xs text-slate-600">Estructura homologada bajo el marco de datos públicos y normativas del consorcio Divvy Bikes.</p>
+        </div>
       </div>
 
-      <div class="pt-8 border-t border-surface-border/60 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-        <span>© 2026 Juan Francisco Brusadin. Todos los derechos reservados.</span>
-        <span class="font-mono">Construido con HTML semántico, Tailwind & Chart.js</span>
+      <div class="bg-amber-50/80 border border-amber-200 rounded-xl p-4 text-xs text-amber-900 leading-relaxed">
+        <strong>Consideraciones de Privacidad (PII):</strong> Los registros cumplen estrictamente con políticas de disociación y anonimización de identidad. No se posee acceso a nombres, tarjetas de crédito, direcciones residenciales o identificadores individuales recurrentes. Por ende, el análisis se ejecuta a nivel de <em>viajes concretados</em> y no de usuarios únicos.
       </div>
+    </section>
+
+    <!-- Section 3: Data Preparation & ETL -->
+    <section id="etl" class="bg-white rounded-2xl p-6 sm:p-10 border border-slate-200 shadow-sm">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-brand-50 text-brand-700 font-bold text-sm border border-brand-200">3</span>
+        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Procesamiento de Datos y Modelo ETL</h2>
+      </div>
+
+      <div class="space-y-6 text-sm sm:text-base text-slate-600 leading-relaxed">
+        <p>
+          La totalidad del flujo de extracción, transformación y limpieza (ETL) fue implementado en <strong>Power Query</strong>, cargando el producto final consolidado en el <strong>Modelo de Datos de Excel (Power Pivot)</strong> mediante conexiones en memoria para garantizar un desempeño computacional ágil sobre los más de 780.000 registros resultantes.
+        </p>
+
+        <!-- ETL Steps Breakdown -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="p-5 rounded-xl border border-slate-200 bg-slate-50">
+            <h3 class="font-semibold text-slate-900 text-sm flex items-center gap-2 mb-2">
+              <span class="w-2 h-2 rounded-full bg-brand-600"></span>
+              1. Normalización de Esquemas
+            </h3>
+            <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside">
+              <li><strong>Unificación de Tipo de Cliente:</strong> Se homogeneizó la taxonomía reclasificando <code class="font-mono bg-white px-1 py-0.5 rounded border border-slate-200">Subscriber</code> a <code class="font-mono bg-white px-1 py-0.5 rounded border border-slate-200">member</code> y <code class="font-mono bg-white px-1 py-0.5 rounded border border-slate-200">Customer</code> a <code class="font-mono bg-white px-1 py-0.5 rounded border border-slate-200">casual</code>.</li>
+              <li><strong>Delimitadores y Formatos:</strong> Ajuste manual de tipos de datos en coordenadas numéricas para evitar errores de delimitador regional (puntos vs. comas).</li>
+              <li><strong>Limpieza de Strings:</strong> Aplicación de <code class="font-mono text-slate-800">Text.Trim</code> y <code class="font-mono text-slate-800">Text.Clean</code> en nombres de estaciones para remover espacios en blanco iniciales o espurios.</li>
+              <li><strong>Depuración de Columnas:</strong> Eliminación de variables no compartidas (ej. <code class="font-mono text-slate-800">birth_year</code> y <code class="font-mono text-slate-800">gender</code> presentes en 2019 pero descontinuadas en 2020).</li>
+            </ul>
+          </div>
+
+          <div class="p-5 rounded-xl border border-slate-200 bg-slate-50">
+            <h3 class="font-semibold text-slate-900 text-sm flex items-center gap-2 mb-2">
+              <span class="w-2 h-2 rounded-full bg-brand-600"></span>
+              2. Imputación Geoespacial Dimensional
+            </h3>
+            <p class="text-xs text-slate-600 mb-2">
+              Dado que el dataset de 2019 carecía de coordenadas geográficas, se implementó una estrategia de modelado dimensional para recuperarlas:
+            </p>
+            <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+              <li>Se extrajeron estaciones de origen (<code class="font-mono">Dim_estaciones_start</code>) y llegada (<code class="font-mono">Dim_estaciones_end</code>) a partir de los datos de 2020.</li>
+              <li>Se combinaron en una dimensión maestra <code class="font-mono">Estaciones</code> desduplicada.</li>
+              <li>Se efectuó un cruce relacional (Merge) hacia los registros de 2019 para imputar la latitud y longitud exacta a partir del nombre/ID de estación.</li>
+            </ul>
+          </div>
+
+          <div class="p-5 rounded-xl border border-slate-200 bg-slate-50">
+            <h3 class="font-semibold text-slate-900 text-sm flex items-center gap-2 mb-2">
+              <span class="w-2 h-2 rounded-full bg-brand-600"></span>
+              3. Ingeniería de Atributos (Feature Engineering)
+            </h3>
+            <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+              <li><code class="font-mono font-medium text-slate-900">tripduration</code>: Calculada como la diferencia temporal en segundos (<code class="font-mono">ended_at - started_at</code>).</li>
+              <li><code class="font-mono font-medium text-slate-900">distance_km</code>: Cálculo de distancia euclidiana/geodésica entre estaciones.</li>
+              <li><code class="font-mono font-medium text-slate-900">start_day</code>: Nombre del día de la semana correspondiente al punto de partida.</li>
+              <li><code class="font-mono font-medium text-slate-900">Franja Horaria</code>: Segmentación en 6 intervalos: Pico Mañana, Media Mañana / Mediodía, Tarde, Pico Tarde, Noche y Madrugada.</li>
+            </ul>
+          </div>
+
+          <div class="p-5 rounded-xl border border-slate-200 bg-slate-50">
+            <h3 class="font-semibold text-slate-900 text-sm flex items-center gap-2 mb-2">
+              <span class="w-2 h-2 rounded-full bg-brand-600"></span>
+              4. Criterios de Exclusión & Limpieza
+            </h3>
+            <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside">
+              <li><strong>Viajes &lt; 60 segundos:</strong> Filtrados por constituir falsos arranques, fallas mecánicas al desenganchar o reintentos inmediatos de anclaje.</li>
+              <li><strong>Viajes &gt; 24 horas (86.400 s):</strong> Excluidos para evitar sesgos severos en la media originados por bicicletas extraviadas, olvidadas o sustraídas.</li>
+              <li><strong>Población neta validada:</strong> <strong class="text-slate-900 font-mono">783.780 viajes</strong> limpios y listos para análisis.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Summary of Analysis & KPI Cards -->
+    <section id="analisis" class="space-y-8">
+      <div class="bg-white rounded-2xl p-6 sm:p-10 border border-slate-200 shadow-sm">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-brand-50 text-brand-700 font-bold text-sm border border-brand-200">4</span>
+          <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Resumen de Métricas Consolidadas</h2>
+        </div>
+
+        <!-- KPI Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Volumen Casual</span>
+            <div class="text-2xl font-bold font-mono text-slate-900 mt-1">67.397</div>
+            <p class="text-xs text-slate-500 mt-1">8,60% del total consolidado</p>
+          </div>
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Volumen Miembros</span>
+            <div class="text-2xl font-bold font-mono text-brand-600 mt-1">716.383</div>
+            <p class="text-xs text-slate-500 mt-1">91,40% del total consolidado</p>
+          </div>
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Duración Promedio Casual</span>
+            <div class="text-2xl font-bold font-mono text-amber-600 mt-1">38,48 min</div>
+            <p class="text-xs text-slate-500 mt-1">2.308,83 segundos por viaje</p>
+          </div>
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Duración Promedio Miembro</span>
+            <div class="text-2xl font-bold font-mono text-teal-600 mt-1">11,47 min</div>
+            <p class="text-xs text-slate-500 mt-1">688,25 segundos por viaje</p>
+          </div>
+        </div>
+
+        <!-- Table 1: Métricas Globales -->
+        <h3 class="text-base font-bold text-slate-900 mb-3">Tabla 1: Comparativa Global de Rendimiento Base</h3>
+        <div class="overflow-x-auto rounded-xl border border-slate-200 mb-8">
+          <table class="w-full text-left text-sm text-slate-600">
+            <thead class="bg-slate-100/75 text-xs uppercase font-semibold text-slate-700 border-b border-slate-200">
+              <tr>
+                <th class="px-4 py-3">Tipo de Usuario</th>
+                <th class="px-4 py-3 text-right">Recuento Distinto (ride_id)</th>
+                <th class="px-4 py-3 text-right">% Participación</th>
+                <th class="px-4 py-3 text-right">Distancia Promedio (km)</th>
+                <th class="px-4 py-3 text-right">Duración Promedio (min)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 font-mono text-xs sm:text-sm">
+              <tr class="hover:bg-slate-50 transition-colors">
+                <td class="px-4 py-3 font-sans font-semibold text-slate-800 flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span> casual
+                </td>
+                <td class="px-4 py-3 text-right">67.397</td>
+                <td class="px-4 py-3 text-right">8,60%</td>
+                <td class="px-4 py-3 text-right">2,13 km</td>
+                <td class="px-4 py-3 text-right font-semibold text-amber-700">38,48 min</td>
+              </tr>
+              <tr class="hover:bg-slate-50 transition-colors">
+                <td class="px-4 py-3 font-sans font-semibold text-slate-800 flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-teal-600 inline-block"></span> member
+                </td>
+                <td class="px-4 py-3 text-right">716.383</td>
+                <td class="px-4 py-3 text-right">91,40%</td>
+                <td class="px-4 py-3 text-right">1,82 km</td>
+                <td class="px-4 py-3 text-right font-semibold text-teal-700">11,47 min</td>
+              </tr>
+              <tr class="bg-slate-50 font-semibold text-slate-900 border-t-2 border-slate-300">
+                <td class="px-4 py-3 font-sans">Total general</td>
+                <td class="px-4 py-3 text-right">783.780</td>
+                <td class="px-4 py-3 text-right">100,00%</td>
+                <td class="px-4 py-3 text-right">1,84 km</td>
+                <td class="px-4 py-3 text-right">13,79 min</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Table 2: Desglose Semanal -->
+        <h3 class="text-base font-bold text-slate-900 mb-3">Tabla 2: Desglose por Día de la Semana (start_day)</h3>
+        <div class="overflow-x-auto rounded-xl border border-slate-200 mb-8">
+          <table class="w-full text-left text-xs sm:text-sm text-slate-600">
+            <thead class="bg-slate-100/75 text-xs uppercase font-semibold text-slate-700 border-b border-slate-200">
+              <tr>
+                <th class="px-3 py-3">Día</th>
+                <th class="px-3 py-3 text-right text-amber-800">Dist. Casual</th>
+                <th class="px-3 py-3 text-right text-amber-800 font-bold">Viajes Casual</th>
+                <th class="px-3 py-3 text-right text-amber-800">Duración Casual</th>
+                <th class="px-3 py-3 text-right text-teal-800">Dist. Member</th>
+                <th class="px-3 py-3 text-right text-teal-800 font-bold">Viajes Member</th>
+                <th class="px-3 py-3 text-right text-teal-800">Duración Member</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 font-mono text-xs">
+              <tr class="hover:bg-slate-50">
+                <td class="px-3 py-2.5 font-sans font-medium text-slate-800">Lunes</td>
+                <td class="px-3 py-2.5 text-right">2,01 km</td>
+                <td class="px-3 py-2.5 text-right font-semibold">5.558</td>
+                <td class="px-3 py-2.5 text-right">34,50 min</td>
+                <td class="px-3 py-2.5 text-right">1,83 km</td>
+                <td class="px-3 py-2.5 text-right font-semibold">109.852</td>
+                <td class="px-3 py-2.5 text-right">11,16 min</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="px-3 py-2.5 font-sans font-medium text-slate-800">Martes</td>
+                <td class="px-3 py-2.5 text-right">2,04 km</td>
+                <td class="px-3 py-2.5 text-right font-semibold">7.266</td>
+                <td class="px-3 py-2.5 text-right">35,67 min</td>
+                <td class="px-3 py-2.5 text-right">1,83 km</td>
+                <td class="px-3 py-2.5 text-right font-semibold">127.359</td>
+                <td class="px-3 py-2.5 text-right">11,37 min</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="px-3 py-2.5 font-sans font-medium text-slate-800">Miércoles</td>
+                <td class="px-3 py-2.5 text-right">2,11 km</td>
+                <td class="px-3 py-2.5 text-right font-semibold">7.623</td>
+                <td class="px-3 py-2.5 text-right">41,29 min</td>
+                <td class="px-3 py-2.5 text-right">1,82 km</td>
+                <td class="px-3 py-2.5 text-right font-semibold">121.296</td>
+                <td class="px-3 py-2.5 text-right">11,22 min</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="px-3 py-2.5 font-sans font-medium text-slate-800">Jueves</td>
+                <td class="px-3 py-2.5 text-right">2,11 km</td>
+                <td class="px-3 py-2.5 text-right font-semibold">7.085</td>
+                <td class="px-3 py-2.5 text-right">35,37 min</td>
+                <td class="px-3 py-2.5 text-right">1,81 km</td>
+                <td class="px-3 py-2.5 text-right font-semibold">124.563</td>
+                <td class="px-3 py-2.5 text-right">11,14 min</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="px-3 py-2.5 font-sans font-medium text-slate-800">Viernes</td>
+                <td class="px-3 py-2.5 text-right">2,01 km</td>
+                <td class="px-3 py-2.5 text-right font-semibold">7.954</td>
+                <td class="px-3 py-2.5 text-right">37,20 min</td>
+                <td class="px-3 py-2.5 text-right">1,76 km</td>
+                <td class="px-3 py-2.5 text-right font-semibold">114.586</td>
+                <td class="px-3 py-2.5 text-right">11,15 min</td>
+              </tr>
+              <tr class="hover:bg-amber-50/40 bg-amber-50/20">
+                <td class="px-3 py-2.5 font-sans font-medium text-amber-900">Sábado</td>
+                <td class="px-3 py-2.5 text-right">2,15 km</td>
+                <td class="px-3 py-2.5 text-right font-bold text-amber-700">13.399</td>
+                <td class="px-3 py-2.5 text-right">38,99 min</td>
+                <td class="px-3 py-2.5 text-right">1,80 km</td>
+                <td class="px-3 py-2.5 text-right text-slate-500">59.033</td>
+                <td class="px-3 py-2.5 text-right">12,53 min</td>
+              </tr>
+              <tr class="hover:bg-amber-50/40 bg-amber-50/20">
+                <td class="px-3 py-2.5 font-sans font-medium text-amber-900">Domingo</td>
+                <td class="px-3 py-2.5 text-right">2,26 km</td>
+                <td class="px-3 py-2.5 text-right font-bold text-amber-700">18.512</td>
+                <td class="px-3 py-2.5 text-right">41,00 min</td>
+                <td class="px-3 py-2.5 text-right">1,87 km</td>
+                <td class="px-3 py-2.5 text-right text-slate-500">59.694</td>
+                <td class="px-3 py-2.5 text-right">13,02 min</td>
+              </tr>
+              <tr class="bg-slate-100 font-semibold text-slate-900">
+                <td class="px-3 py-2.5 font-sans">Total general</td>
+                <td class="px-3 py-2.5 text-right">2,13 km</td>
+                <td class="px-3 py-2.5 text-right">67.397</td>
+                <td class="px-3 py-2.5 text-right">38,48 min</td>
+                <td class="px-3 py-2.5 text-right">1,82 km</td>
+                <td class="px-3 py-2.5 text-right">716.383</td>
+                <td class="px-3 py-2.5 text-right">11,47 min</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Top Stations Highlight -->
+        <h3 class="text-base font-bold text-slate-900 mb-3">Top 10 Estaciones de Mayor Volumen de Salida</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          <div class="p-3.5 rounded-lg border border-slate-200 bg-white flex justify-between items-center">
+            <span class="text-xs font-medium text-slate-700">1. Canal St & Adams St</span>
+            <span class="font-mono text-xs font-bold text-brand-700">14.104 viajes</span>
+          </div>
+          <div class="p-3.5 rounded-lg border border-slate-200 bg-white flex justify-between items-center">
+            <span class="text-xs font-medium text-slate-700">2. Clinton St & Washington Blvd</span>
+            <span class="font-mono text-xs font-bold text-brand-700">13.589 viajes</span>
+          </div>
+          <div class="p-3.5 rounded-lg border border-slate-200 bg-white flex justify-between items-center">
+            <span class="text-xs font-medium text-slate-700">3. Clinton St & Madison St</span>
+            <span class="font-mono text-xs font-bold text-brand-700">13.304 viajes</span>
+          </div>
+          <div class="p-3.5 rounded-lg border border-slate-200 bg-white flex justify-between items-center">
+            <span class="text-xs font-medium text-slate-700">4. Columbus Dr & Randolph St</span>
+            <span class="font-mono text-xs font-semibold text-slate-700">9.030 viajes</span>
+          </div>
+          <div class="p-3.5 rounded-lg border border-slate-200 bg-white flex justify-between items-center">
+            <span class="text-xs font-medium text-slate-700">5. Kingsbury St & Kinzie St</span>
+            <span class="font-mono text-xs font-semibold text-slate-700">8.983 viajes</span>
+          </div>
+          <div class="p-3.5 rounded-lg border border-slate-200 bg-white flex justify-between items-center">
+            <span class="text-xs font-medium text-slate-700">6. Canal St & Madison St</span>
+            <span class="font-mono text-xs font-semibold text-slate-700">8.108 viajes</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Interactive Visualizations & Key Findings -->
+    <section id="visualizaciones" class="space-y-10">
+      <div>
+        <div class="flex items-center gap-3 mb-2">
+          <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-brand-50 text-brand-700 font-bold text-sm border border-brand-200">5</span>
+          <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Visualizaciones Interactivas y Hallazgos Gráficos</h2>
+        </div>
+        <p class="text-slate-600 text-sm">
+          Representación gráfica construida con Chart.js directamente a partir de las tablas dinámicas analizadas.
+        </p>
+      </div>
+
+      <!-- Charts Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        <!-- Chart 1: Duración vs Distancia -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-bold text-slate-900 text-base">Duración Promedio vs. Distancia</h3>
+              <span class="text-xs font-mono bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Métrica Base</span>
+            </div>
+            <p class="text-xs text-slate-500 mb-6">
+              Contraste entre minutos recorridos y kilómetros desplazados según categoría de usuario.
+            </p>
+            <div class="relative h-64 sm:h-72 w-full">
+              <canvas id="chartDurationDistance"></canvas>
+            </div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-600 leading-relaxed bg-slate-50 p-3 rounded-lg">
+            <strong>Hallazgo:</strong> Aunque la distancia geográfica promedio es casi idéntica (2,13 km en casuales vs. 1,82 km en miembros), la <em>duración del trayecto</em> en usuarios casuales (38,5 min) más que triplica a los miembros (11,5 min). Esto valida que el usuario casual realiza recorridos recreativos y pausados, mientras que el miembro se desplaza de forma directa.
+          </div>
+        </div>
+
+        <!-- Chart 2: Dinámica Semanal -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-bold text-slate-900 text-base">Volumen de Viajes por Día de la Semana</h3>
+              <span class="text-xs font-mono bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Día a Día</span>
+            </div>
+            <p class="text-xs text-slate-500 mb-6">
+              Comparativa de volumen entre días laborales (lunes a viernes) y fin de semana.
+            </p>
+            <div class="relative h-64 sm:h-72 w-full">
+              <canvas id="chartWeeklyVolume"></canvas>
+            </div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-600 leading-relaxed bg-slate-50 p-3 rounded-lg">
+            <strong>Hallazgo (Crossover Effect):</strong> Se aprecia una inversión simétrica de patrones. Los miembros mantienen una meseta alta durante la semana laboral (110k-127k viajes/día) que cae abruptamente a ~59k el fin de semana. Los casuales permanecen en su piso entre lunes y viernes, duplicando y triplicando su volumen los sábados (13.399) y domingos (18.512), donde concentran el 47,3% de su demanda total.
+          </div>
+        </div>
+
+        <!-- Chart 3: Franjas Horarias -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-bold text-slate-900 text-base">Distribución por Franjas Horarias</h3>
+              <span class="text-xs font-mono bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Picos Urbanos</span>
+            </div>
+            <p class="text-xs text-slate-500 mb-6">
+              Volumen acumulado por momento del día en la muestra total analizada.
+            </p>
+            <div class="relative h-64 sm:h-72 w-full">
+              <canvas id="chartTimeSlots"></canvas>
+            </div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-600 leading-relaxed bg-slate-50 p-3 rounded-lg">
+            <strong>Hallazgo:</strong> Los miembros presentan un comportamiento bimodal prototípico de <em>commuting</em> laboral: picos prominentes en el <em>Pico Mañana</em> (205k viajes totales) y <em>Pico Tarde</em> (196k viajes). Por el contrario, la demanda casual se expande de manera unimodal a partir de la media mañana y alcanza su máxima expresión durante las tardes y mediodías de fin de semana.
+          </div>
+        </div>
+
+        <!-- Chart 4: Evolución Interanual -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-bold text-slate-900 text-base">Evolución Mensual & Crecimiento Interanual (YoY)</h3>
+              <span class="text-xs font-mono bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Q1 2019 vs. Q1 2020</span>
+            </div>
+            <p class="text-xs text-slate-500 mb-6">
+              Comportamiento mensual comparado (Enero, Febrero, Marzo) de ambos períodos.
+            </p>
+            <div class="relative h-64 sm:h-72 w-full">
+              <canvas id="chartYoYGrowth"></canvas>
+            </div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-600 leading-relaxed bg-slate-50 p-3 rounded-lg">
+            <strong>Hallazgo:</strong> En el segmento casual, el volumen trimestral saltó de 23.095 viajes en Q1 2019 a 44.302 viajes en Q1 2020, representando una tasa de crecimiento de +91,8%. Ambos segmentos demuestran una alta sensibilidad climática con picos en marzo, mientras que marzo de 2020 refleja la primera desaceleración en miembros debido al comienzo de restricciones preventivas.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 py-10 mt-20 text-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-xs text-slate-500 space-y-2">
+      <p class="font-medium text-slate-700">Caso de Estudio Cyclistic Bike-Share • Google Data Analytics Professional Certificate</p>
+      <p>Pipeline de datos desarrollado con Power Query y analizado en Modelo de Datos Power Pivot • Visualización con Chart.js</p>
+      <p class="font-mono text-slate-400 text-[11px] pt-2">Diseñado para despliegue estático en GitHub Pages</p>
     </div>
-  </section>
+  </footer>
 
+  <!-- Chart.js Scripts -->
   <script>
-    // Mobile navigation drawer toggle
-    const mobileBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    mobileBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
+    document.addEventListener('DOMContentLoaded', () => {
+      // Global Chart Defaults
+      Chart.defaults.font.family = "'Inter', sans-serif";
+      Chart.defaults.color = '#64748b';
+      Chart.defaults.plugins.tooltip.padding = 10;
+      Chart.defaults.plugins.tooltip.cornerRadius = 8;
 
-    // Close mobile menu on link click
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-    });
-
-    // Copy SQL Snippet Functionality
-    function copySQLSnippet() {
-      const codeElement = document.getElementById('sqlCodeContent');
-      const textToCopy = codeElement.innerText;
-
-      // Fallback-safe clipboard copy
-      const tempTextArea = document.createElement('textarea');
-      tempTextArea.value = textToCopy;
-      document.body.appendChild(tempTextArea);
-      tempTextArea.select();
-      try {
-        document.execCommand('copy');
-        const copyText = document.getElementById('copyText');
-        const copyIcon = document.getElementById('copyIcon');
-        copyText.textContent = '¡Copiado!';
-        copyIcon.className = 'fa-solid fa-check text-teal-400';
-        setTimeout(() => {
-          copyText.textContent = 'Copiar SQL';
-          copyIcon.className = 'fa-regular fa-copy';
-        }, 2200);
-      } catch (err) {
-        console.error('Error al copiar:', err);
-      }
-      document.body.removeChild(tempTextArea);
-    }
-
-    // Chart.js Data Configuration
-    const yearsLabels = ['1970', '1980', '1990', '2000', '2005', '2010', '2015', '2020', '2023'];
-
-    const metricDatasets = {
-      total: {
-        title: 'Emisiones Anuales Brutas de CO₂ (Millones de Toneladas)',
-        unit: 'Mt CO₂',
-        china: [777, 1466, 2424, 3350, 5849, 8780, 9716, 10940, 11400],
-        usa: [4320, 4750, 5080, 5770, 5740, 5390, 4990, 4530, 4750],
-        eu: [3650, 4020, 3810, 3620, 3680, 3310, 2900, 2480, 2520],
-        row: [6100, 7800, 9900, 11800, 13900, 15800, 17500, 18200, 18800]
-      },
-      perCapita: {
-        title: 'Emisiones de CO₂ Por Habitante (Toneladas anuales per cápita)',
-        unit: 'Ton / hab',
-        china: [0.95, 1.48, 2.12, 2.65, 4.45, 6.48, 6.95, 7.78, 8.05],
-        usa: [21.1, 20.8, 20.2, 20.5, 19.4, 17.4, 15.5, 13.7, 14.9],
-        eu: [9.1, 9.7, 8.9, 8.2, 8.1, 7.2, 6.3, 5.4, 5.6],
-        row: [2.3, 2.4, 2.5, 2.6, 2.8, 2.9, 3.0, 3.0, 3.1]
-      },
-      cumulative: {
-        title: 'Responsabilidad Histórica Acumulada (Gigatoneladas acumuladas)',
-        unit: 'Gt CO₂',
-        china: [12, 23, 42, 70, 104, 158, 226, 295, 332],
-        usa: [98, 145, 195, 250, 278, 307, 333, 357, 372],
-        eu: [140, 179, 218, 255, 273, 290, 305, 319, 327],
-        row: [110, 160, 230, 320, 380, 460, 550, 640, 690]
-      }
-    };
-
-    let activeChart = null;
-
-    function renderEmissionsChart(metricKey) {
-      const metric = metricDatasets[metricKey];
-      document.getElementById('chartTitle').textContent = metric.title;
-
-      const ctx = document.getElementById('emissionsChart').getContext('2d');
-
-      if (activeChart) {
-        activeChart.destroy();
-      }
-
-      activeChart = new Chart(ctx, {
-        type: 'line',
+      // -------------------------------------------------------------
+      // Chart 1: Average Ride Duration & Distance by User Type
+      // -------------------------------------------------------------
+      const ctxDuration = document.getElementById('chartDurationDistance').getContext('2d');
+      new Chart(ctxDuration, {
+        type: 'bar',
         data: {
-          labels: yearsLabels,
+          labels: ['Usuarios Casuales', 'Miembros Anuales'],
           datasets: [
             {
-              label: 'China',
-              data: metric.china,
-              borderColor: '#ef4444',
-              backgroundColor: 'rgba(239, 68, 68, 0.1)',
-              tension: 0.35,
-              borderWidth: 2.5,
-              pointRadius: 3,
-              pointHoverRadius: 6
-            },
-            {
-              label: 'Estados Unidos',
-              data: metric.usa,
-              borderColor: '#38bdf8',
-              backgroundColor: 'rgba(56, 189, 248, 0.1)',
-              tension: 0.35,
-              borderWidth: 2.5,
-              pointRadius: 3,
-              pointHoverRadius: 6
-            },
-            {
-              label: 'Unión Europea (27)',
-              data: metric.eu,
-              borderColor: '#10b981',
-              backgroundColor: 'rgba(16, 185, 129, 0.1)',
-              tension: 0.35,
-              borderWidth: 2.5,
-              pointRadius: 3,
-              pointHoverRadius: 6
-            },
-            {
-              label: 'Resto del Mundo',
-              data: metric.row,
-              borderColor: '#94a3b8',
-              backgroundColor: 'transparent',
-              borderDash: [5, 5],
-              tension: 0.35,
+              label: 'Duración Promedio (Minutos)',
+              data: [38.48, 11.47],
+              backgroundColor: ['rgba(245, 158, 11, 0.85)', 'rgba(13, 148, 136, 0.85)'],
+              borderColor: ['#d97706', '#0f766e'],
               borderWidth: 1.5,
-              pointRadius: 2
+              borderRadius: 6,
+              yAxisID: 'y'
+            },
+            {
+              label: 'Distancia Promedio (Km)',
+              data: [2.13, 1.82],
+              backgroundColor: ['rgba(217, 119, 6, 0.3)', 'rgba(20, 184, 166, 0.3)'],
+              borderColor: ['#b45309', '#0d9488'],
+              borderWidth: 1.5,
+              borderRadius: 6,
+              yAxisID: 'y1',
+              type: 'bar'
             }
           ]
         },
         options: {
           responsive: true,
           maintainAspectRatio: false,
-          interaction: {
-            mode: 'index',
-            intersect: false
-          },
           plugins: {
-            legend: {
-              labels: {
-                color: '#94a3b8',
-                font: { family: '"Plus Jakarta Sans"', size: 11 }
-              }
-            },
+            legend: { position: 'top', labels: { boxWidth: 12, font: { size: 11 } } },
             tooltip: {
-              backgroundColor: '#0f172a',
-              titleColor: '#f8fafc',
-              bodyColor: '#cbd5e1',
-              borderColor: '#334155',
-              borderWidth: 1,
-              padding: 10,
-              boxPadding: 4,
               callbacks: {
                 label: function(context) {
-                  return ` ${context.dataset.label}: ${context.parsed.y.toLocaleString()} ${metric.unit}`;
+                  const unit = context.datasetIndex === 0 ? ' min' : ' km';
+                  return context.dataset.label + ': ' + context.parsed.y + unit;
                 }
               }
             }
           },
           scales: {
-            x: {
-              grid: { color: 'rgba(255, 255, 255, 0.05)' },
-              ticks: { color: '#64748b', font: { family: '"JetBrains Mono"', size: 10 } }
-            },
             y: {
-              grid: { color: 'rgba(255, 255, 255, 0.05)' },
-              ticks: { 
-                color: '#64748b', 
-                font: { family: '"JetBrains Mono"', size: 10 },
-                callback: function(val) { return val.toLocaleString(); }
+              type: 'linear',
+              position: 'left',
+              title: { display: true, text: 'Minutos', font: { size: 11, weight: 'bold' } },
+              grid: { color: '#f1f5f9' },
+              suggestedMax: 45
+            },
+            y1: {
+              type: 'linear',
+              position: 'right',
+              title: { display: true, text: 'Kilómetros', font: { size: 11, weight: 'bold' } },
+              grid: { drawOnChartArea: false },
+              suggestedMax: 3
+            },
+            x: { grid: { display: false } }
+          }
+        }
+      });
+
+      // -------------------------------------------------------------
+      // Chart 2: Weekly Volume by Day of Week
+      // -------------------------------------------------------------
+      const ctxWeekly = document.getElementById('chartWeeklyVolume').getContext('2d');
+      new Chart(ctxWeekly, {
+        type: 'line',
+        data: {
+          labels: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'],
+          datasets: [
+            {
+              label: 'Miembros (Member)',
+              data: [109852, 127359, 121296, 124563, 114586, 59033, 59694],
+              borderColor: '#0d9488',
+              backgroundColor: 'rgba(13, 148, 136, 0.08)',
+              fill: true,
+              tension: 0.3,
+              pointBackgroundColor: '#0d9488',
+              pointRadius: 4,
+              pointHoverRadius: 6,
+              borderWidth: 2.5
+            },
+            {
+              label: 'Casuales (Casual)',
+              data: [5558, 7266, 7623, 7085, 7954, 13399, 18512],
+              borderColor: '#f59e0b',
+              backgroundColor: 'rgba(245, 158, 11, 0.08)',
+              fill: true,
+              tension: 0.3,
+              pointBackgroundColor: '#f59e0b',
+              pointRadius: 4,
+              pointHoverRadius: 6,
+              borderWidth: 2.5
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { position: 'top', labels: { boxWidth: 12, font: { size: 11 } } },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return context.dataset.label + ': ' + context.parsed.y.toLocaleString('es-AR') + ' viajes';
+                }
               }
+            }
+          },
+          scales: {
+            y: {
+              grid: { color: '#f1f5f9' },
+              ticks: {
+                callback: function(value) { return (value / 1000) + 'k'; }
+              }
+            },
+            x: { grid: { display: false } }
+          }
+        }
+      });
+
+      // -------------------------------------------------------------
+      // Chart 3: Time Slot Distribution
+      // -------------------------------------------------------------
+      const ctxSlots = document.getElementById('chartTimeSlots').getContext('2d');
+      new Chart(ctxSlots, {
+        type: 'bar',
+        data: {
+          labels: ['1. Pico Mañana', '2. Media Mañana/Mediodía', '3. Tarde', '4. Pico Tarde', '5. Noche', '6. Madrugada'],
+          datasets: [
+            {
+              label: 'Miembros',
+              data: [200840, 120562, 147570, 184518, 45293, 17600],
+              backgroundColor: 'rgba(13, 148, 136, 0.85)',
+              borderRadius: 6
+            },
+            {
+              label: 'Casuales',
+              data: [4427, 18573, 26090, 12109, 4677, 1521],
+              backgroundColor: 'rgba(245, 158, 11, 0.85)',
+              borderRadius: 6
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'top', labels: { boxWidth: 12, font: { size: 11 } } },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return context.dataset.label + ': ' + context.parsed.y.toLocaleString('es-AR') + ' viajes';
+                }
+              }
+            }
+          },
+          scales: {
+            y: {
+              grid: { color: '#f1f5f9' },
+              ticks: { callback: function(value) { return (value / 1000) + 'k'; } }
+            },
+            x: { grid: { display: false } }
+          }
+        }
+      });
+
+      // -------------------------------------------------------------
+      // Chart 4: Monthly YoY Comparison
+      // -------------------------------------------------------------
+      const ctxYoY = document.getElementById('chartYoYGrowth').getContext('2d');
+      new Chart(ctxYoY, {
+        type: 'bar',
+        data: {
+          labels: ['Enero 2019', 'Enero 2020', 'Febrero 2019', 'Febrero 2020', 'Marzo 2019', 'Marzo 2020'],
+          datasets: [
+            {
+              label: 'Casuales',
+              data: [4591, 7678, 2627, 12206, 15877, 24418],
+              backgroundColor: '#f59e0b',
+              borderRadius: 4
+            },
+            {
+              label: 'Miembros',
+              data: [98601, 134866, 93522, 125383, 149659, 114352],
+              backgroundColor: '#0f766e',
+              borderRadius: 4
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'top', labels: { boxWidth: 12, font: { size: 11 } } },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return context.dataset.label + ': ' + context.parsed.y.toLocaleString('es-AR') + ' viajes';
+                }
+              }
+            }
+          },
+          scales: {
+            x: { stacked: true, grid: { display: false } },
+            y: {
+              stacked: true,
+              grid: { color: '#f1f5f9' },
+              ticks: { callback: function(value) { return (value / 1000) + 'k'; } }
             }
           }
         }
       });
-    }
 
-    function switchMetric(type) {
-      const btnTotal = document.getElementById('btnTotal');
-      const btnPerCapita = document.getElementById('btnPerCapita');
-      const btnCumulative = document.getElementById('btnCumulative');
-
-      const buttons = [btnTotal, btnPerCapita, btnCumulative];
-      buttons.forEach(btn => {
-        btn.className = 'px-3 py-1.5 rounded-lg text-slate-400 hover:text-white font-medium transition-all';
-      });
-
-      if (type === 'total') {
-        btnTotal.className = 'px-3 py-1.5 rounded-lg bg-brand-500 text-white font-medium transition-all shadow-sm';
-      } else if (type === 'perCapita') {
-        btnPerCapita.className = 'px-3 py-1.5 rounded-lg bg-brand-500 text-white font-medium transition-all shadow-sm';
-      } else if (type === 'cumulative') {
-        btnCumulative.className = 'px-3 py-1.5 rounded-lg bg-brand-500 text-white font-medium transition-all shadow-sm';
-      }
-
-      renderEmissionsChart(type);
-    }
-
-    // Initialize default chart on page load
-    window.addEventListener('DOMContentLoaded', () => {
-      renderEmissionsChart('total');
     });
   </script>
 </body>
